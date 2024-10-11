@@ -12,17 +12,20 @@ import numpy as np
 import numpy as np
 from PIL import Image
 
-def resize_image(image, target_size=(100, 100),To_gray= True):
+def resize_image(image, target_size=(100, 100),To_gray= True, normalize = True):
     # Convert the image (PIL or NumPy) to a PIL Image if necessary
     if isinstance(image, np.ndarray):
         image = Image.fromarray(image)
 
     if(To_gray):
     	# Convert the image to grayscale
-    	image = image.convert("L")
+    	grayscale_image = image.convert("L")
     
     # Resize the image
     resized_image = image.resize(target_size)
+
+    if(normalize):
+    	resized_image = resized_image / 255.0  # Normalize
     
     # Convert back to NumPy array
     return np.array(resized_image)
@@ -41,7 +44,7 @@ def Ocular_Disease_Detection_FromScratchModel(img, weights_file):
     #img = load_img(img, target_size=(100,100))
     img = resize_image(img, target_size=(150, 150))
     img = img_to_array(img)
-    img = img.reshape(1,150,150,1)
+    img = img.reshape(1,150,150,3)
     result = model.predict(img)
     result = np.argmax(result) # return position of the highest probability
     prediction = [key for key in class_labels][result]
