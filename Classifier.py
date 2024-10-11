@@ -19,7 +19,7 @@ def resize_image(image, target_size=(100, 100),To_gray= True):
 
     if(To_gray):
     	# Convert the image to grayscale
-    	grayscale_image = image.convert("L")
+    	image = image.convert("L")
     
     # Resize the image
     resized_image = image.resize(target_size)
