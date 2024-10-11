@@ -16,6 +16,7 @@ if uploaded_file is not None:
 	st.write("Classifying...")
 	#label,max_Prob  = Ocular_Disease_Detection_FromScratchModel(image, 'model_1_CNN.keras')
 	label = Ocular_Disease_Detection_FromScratchModel(image, 'model_1_CNN.keras')
+	#st.write(f"Prediction: {label}, with Probability:{max_Prob }")
 	st.write(f"Prediction: {label}, with Probability:{max_Prob }")
 	if label == 'ACRIMA':
 		    st.write("The illness is  ACRIMA")
