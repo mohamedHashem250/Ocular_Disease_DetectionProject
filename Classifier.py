@@ -37,8 +37,8 @@ def Ocular_Disease_Detection_FromScratchModel(img, weights_file):
     #img = load_img(img, target_size=(100,100))
     img = resize_image(img, target_size=(150, 150))
     img = img_to_array(img)
-    #img = img.reshape(1,150,150,3)
-    img = img.reshape(150,150)
+    img = img.reshape(1,150,150,1)
+    #img = img.reshape(150,150)
     result = model.predict(img)
     result = np.argmax(result) # return position of the highest probability
     prediction = [key for key in class_labels][result]
