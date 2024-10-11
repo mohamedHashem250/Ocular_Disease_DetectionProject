@@ -48,7 +48,7 @@ def Ocular_Disease_Detection_FromScratchModel(img, weights_file):
     result = model.predict(img)
     resultt = np.argmax(result) # return position of the highest probability
     # Get the maximum value
-    max_Prob = result[resultt] * 100
+    max_Prob = np.round(max(result) * 100,4)
     prediction = [key for key in class_labels][resultt]
     return prediction,max_Prob 
 
