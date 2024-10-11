@@ -19,7 +19,7 @@ def resize_image(image, target_size=(100, 100),To_gray= True, normalize = True):
 
     if(To_gray):
     	# Convert the image to grayscale
-    	grayscale_image = image.convert("L")
+    	 image = image.convert("L")
     
     # Resize the image
     resized_image = np.array(image.resize(target_size))
@@ -46,8 +46,10 @@ def Ocular_Disease_Detection_FromScratchModel(img, weights_file):
     img = img_to_array(img)
     img = img.reshape(1,150,150,1)
     result = model.predict(img)
-    result = np.argmax(result) # return position of the highest probability
-    prediction = [key for key in class_labels][result]
-    return prediction
+    resultt = np.argmax(result) # return position of the highest probability
+    # Get the maximum value
+    max_Prob = result[resultt] * 100
+    prediction = [key for key in class_labels][resultt]
+    return prediction,max_Prob 
 
 
