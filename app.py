@@ -11,10 +11,9 @@ uploaded_file = st.file_uploader("Choose an image", type="jpg")
 st.header("Ocular_Disease_Detection")
 st.text("Upload a Image for to diagnose Ocular Disease")
 if uploaded_file is not None:
-    image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image', use_column_width=True)
-    st.write("Classifying...")
-
+	image = Image.open(uploaded_file)
+	st.image(image, caption='Uploaded Image', use_column_width=True)
+	st.write("Classifying...")
 	label = Ocular_Disease_Detection_FromScratchModel(image, 'model_1_CNN.keras')
 	st.write(f"Prediction: {label}")
 	if label == 'ACRIMA':
