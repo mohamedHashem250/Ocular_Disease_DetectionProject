@@ -22,7 +22,7 @@ def resize_image(image, target_size=(100, 100),To_gray= True, normalize = True):
     	grayscale_image = image.convert("L")
     
     # Resize the image
-    resized_image = image.resize(target_size)
+    resized_image = np.array(image.resize(target_size))
 
     if(normalize):
     	resized_image = resized_image / 255.0  # Normalize
