@@ -14,8 +14,8 @@ if uploaded_file is not None:
 	image = Image.open(uploaded_file)
 	st.image(image, caption='Uploaded Image', use_column_width=True)
 	st.write("Classifying...")
-	label = Ocular_Disease_Detection_FromScratchModel(image, 'model_1_CNN.keras')
-	st.write(f"Prediction: {label}")
+	label,max_Prob  = Ocular_Disease_Detection_FromScratchModel(image, 'model_1_CNN.keras')
+	st.write(f"Prediction: {label}, with Probability:{max_Prob }")
 	if label == 'ACRIMA':
 		    st.write("The illness is  ACRIMA")
 	elif label ==  'Glaucoma':
